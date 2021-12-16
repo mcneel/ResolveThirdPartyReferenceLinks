@@ -108,6 +108,7 @@ namespace ResolveThirdPartyReferenceLinks
 
                         // write hyperlink
                         WriteHrefFor(refLink, provider.CreateUrl(target), title);
+                        break;
                     }
             }
         }
