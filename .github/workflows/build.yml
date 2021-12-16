@@ -1,0 +1,58 @@
+name: Build
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+env:
+  DotNetVersion: "6.0.100"
+  BuildConfiguration: "Release"
+  BuildParameters: "ResolveThirdPartyReferenceLinks.sln /v:Minimal /consoleLoggerParameters:NoSummary /p:Configuration=Release /p:BuildVersion=${{ github.run_id }} /p:BuildBranch=${{ github.ref }}"
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        submodules: true
+
+    - name: setup dotnet
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: ${{ env.DotNetVersion }}
+
+    - name: setup msbuild
+      uses: microsoft/setup-msbuild@v1
+
+    - name: build
+      run: dotnet build ${{ env.BuildParameters }} /p:Platform=Windows /t:Build
+
+    - name: upload nuget artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: nuget
+        path: artifacts/nuget/${{ env.BuildConfiguration }}/*.nupkg
+
+  build-mac:
+    runs-on: macos-11
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        submodules: true
+
+    - name: setup dotnet
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: ${{ env.DotNetVersion }}
+
+    - name: build
+      run: dotnet build ${{ env.BuildParameters }} /p:Platform=Mac /t:Build
+
+    - name: upload nuget artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: nuget
+        path: artifacts/nuget/${{ env.BuildConfiguration }}/*.nupkg
