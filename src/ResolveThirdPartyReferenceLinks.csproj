@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<!-- <GenerateAssemblyVersionAttribute>False</GenerateAssemblyVersionAttribute>
+		<GenerateAssemblyFileVersionAttribute>False</GenerateAssemblyFileVersionAttribute>
+		<GenerateAssemblyInformationalVersionAttribute>False</GenerateAssemblyInformationalVersionAttribute> -->
+		<EnableNETAnalyzers>true</EnableNETAnalyzers>
+		<AnalysisMode>AllEnabledByDefault</AnalysisMode>
+		<RootNamespace>ResolveThirdPartyReferenceLinks</RootNamespace>
+		<AssemblyName>ResolveThirdPartyReferenceLinks</AssemblyName>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<Product>ResolveThirdPartyReferenceLinks</Product>
+		<Version>0.1.0</Version>
+		<PackageVersion>$(Version)-beta</PackageVersion>
+		<Title>ResolveThirdPartyReferenceLinks SandCastle BuildAssembly Component</Title>
+		<Description>SandCastle BuildAssembly component to resolve thirdparty reference links</Description>
+		<Authors>Robert McNeel and Associates</Authors>
+		<Company>McNeel</Company>
+		<Copyright>Copyright (c) 1997-2021 Robert McNeel and Associates</Copyright>
+		<PackageIcon>icon.png</PackageIcon>
+		<RepositoryUrl>https://github.com/mcneel/ResolveThirdPartyReferenceLinks.git</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<PackageTags>ResolveThirdPartyReferenceLinks SHFB sandcastle build component</PackageTags>
+		<PackageProjectUrl>https://github.com/mcneel/ResolveThirdPartyReferenceLinks</PackageProjectUrl>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageReleaseNotes>https://github.com/mcneel/ResolveThirdPartyReferenceLinks/blob/main/CHANGELOG.md</PackageReleaseNotes>
+		<IsTool>true</IsTool>
+		<NoWarn>$(NoWarn);NU5128;CA1034;CA1303;CA1708;CA2227</NoWarn>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="$(SourceDir)..\art\icon.png" Pack="true" PackagePath="" />
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="System.ComponentModel.Composition" Version="5.0.0" />
+		<PackageReference Include="EWSoftware.Sandcastle.Core" Version="2021.10.23" />
+	</ItemGroup>
+</Project>
