@@ -19,7 +19,7 @@ namespace ResolveThirdPartyReferenceLinks.Providers
         [XmlElement("targetMatcher")]
         public UrlProviderTargetMatcher TargetMatcher { get; set; }
 
-        public abstract class UrlProviderTargetFormatter
+        public class UrlProviderTargetFormatter
         {
             public abstract class TargetFormatterStep
             {
@@ -42,12 +42,12 @@ namespace ResolveThirdPartyReferenceLinks.Providers
                 }
             }
 
-            [XmlArray("targetFormatter")]
+            [XmlArray("steps")]
             [XmlArrayItem("replace", typeof(TargetFormatterReplaceStep))]
-            public Collection<TargetFormatterStep> Steps { get; set; } = new Collection<TargetFormatterStep>();
+            public Collection<TargetFormatterStep> Steps { get; set; }
         }
 
-        [XmlElement("steps")]
+        [XmlElement("targetFormatter")]
         public UrlProviderTargetFormatter TargetFormatter { get; set; }
 
         public class UrlProviderParameter
@@ -63,7 +63,7 @@ namespace ResolveThirdPartyReferenceLinks.Providers
 
         [XmlArray("parameters")]
         [XmlArrayItem("parameter", typeof(UrlProviderParameter))]
-        public Collection<UrlProviderParameter> Parameters { get; set; } = new Collection<UrlProviderParameter>();
+        public Collection<UrlProviderParameter> Parameters { get; set; }
 
         public virtual bool IsMatch(string target)
         {

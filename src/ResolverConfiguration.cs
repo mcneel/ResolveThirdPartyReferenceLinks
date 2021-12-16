@@ -12,6 +12,6 @@ namespace ResolveThirdPartyReferenceLinks
         [XmlArray("urlProviders")]
         [XmlArrayItem("formattedProvider", typeof(FormattedUrlProvider))]
         [XmlArrayItem("dictProvider", typeof(DictionaryUrlProvider))]
-        public Collection<UrlProviderBase> UrlProviders { get; set; } = new Collection<UrlProviderBase>();
+        public Collection<UrlProviderBase> UrlProviders { get; set; }
     }
 }

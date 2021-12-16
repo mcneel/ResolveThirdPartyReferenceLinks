@@ -6,6 +6,7 @@ using System.Xml.XPath;
 using System.Xml.Serialization;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using System.Collections.ObjectModel;
 using System.Resources;
 
 using Sandcastle.Core.BuildAssembler;
@@ -59,10 +60,10 @@ namespace ResolveThirdPartyReferenceLinks
                     XmlSerializer serializer = new XmlSerializer(typeof(ResolverConfiguration));
                     ResolverConfiguration configs = (ResolverConfiguration)serializer.Deserialize(reader);
 
-                    WriteMessage(MessageLevel.Info, $"Found {configs.UrlProviders.Count} providers...");
-                    foreach (var provider in configs.UrlProviders)
+                    WriteMessage(MessageLevel.Info, $"Found {configs.UrlProviders?.Count ?? 0} providers...");
+                    foreach (var provider in configs.UrlProviders ?? new Collection<UrlProviderBase>())
                     {
-                        foreach (var param in provider.Parameters)
+                        foreach (var param in provider.Parameters ?? new Collection<UrlProviderBase.UrlProviderParameter>())
                             if (configuration.SelectSingleNode(param.Name) is XPathNavigator xparam)
                                 param.Value = xparam.GetAttribute("value", string.Empty);
 
@@ -101,7 +102,7 @@ namespace ResolveThirdPartyReferenceLinks
                         WriteMessage(MessageLevel.Info, $"Converting reference link for {target}");
 
                         // create title for hyperlink
-                        string title = key;
+                        string title = target;
                         if (title.IndexOf(":", StringComparison.OrdinalIgnoreCase) is int index && index > -1)
                             title = title.Substring(index + 1);
 

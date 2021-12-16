@@ -26,7 +26,7 @@ namespace ResolveThirdPartyReferenceLinks.Providers
 
                 // generate url
                 string url = urlFormat.Replace("{target}", formattedTarget);
-                foreach (UrlProviderParameter param in Parameters)
+                foreach (UrlProviderParameter param in Parameters ?? new Collection<UrlProviderBase.UrlProviderParameter>())
                     url = url.Replace($"{{{param.Name}}}", param.Value);
 
                 return new Uri(url);
