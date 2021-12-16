@@ -19,37 +19,6 @@ namespace ResolveThirdPartyReferenceLinks.Providers
         [XmlElement("targetMatcher")]
         public UrlProviderTargetMatcher TargetMatcher { get; set; }
 
-        public class UrlProviderTargetFormatter
-        {
-            public abstract class TargetFormatterStep
-            {
-                public abstract string Apply(string target);
-            }
-
-            public class TargetFormatterReplaceStep : TargetFormatterStep
-            {
-                [XmlAttribute("pattern")]
-                public string Pattern { get; set; }
-
-                [XmlAttribute("with")]
-                public string Replacement { get; set; }
-
-                public override string Apply(string target)
-                {
-                    if (Pattern is string pattern)
-                        return new Regex(pattern).Replace(target, Replacement ?? string.Empty);
-                    return target;
-                }
-            }
-
-            [XmlArray("steps")]
-            [XmlArrayItem("replace", typeof(TargetFormatterReplaceStep))]
-            public Collection<TargetFormatterStep> Steps { get; set; }
-        }
-
-        [XmlElement("targetFormatter")]
-        public UrlProviderTargetFormatter TargetFormatter { get; set; }
-
         public class UrlProviderParameter
         {
             [XmlAttribute("name")]
