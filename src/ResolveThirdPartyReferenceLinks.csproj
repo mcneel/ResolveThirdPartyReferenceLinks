@@ -7,8 +7,8 @@
 		<AssemblyName>ResolveThirdPartyReferenceLinks</AssemblyName>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<Product>ResolveThirdPartyReferenceLinks</Product>
-		<Version>0.1.1</Version>
-		<PackageVersion>$(Version)-beta</PackageVersion>
+		<Version>0.1.0</Version>
+		<PackageVersion>$(Version)</PackageVersion>
 		<Title>ResolveThirdPartyReferenceLinks SandCastle BuildAssembly Component</Title>
 		<Description>SandCastle BuildAssembly component to resolve thirdparty reference links</Description>
 		<Authors>Robert McNeel and Associates</Authors>
