@@ -7,7 +7,7 @@
 		<AssemblyName>ResolveThirdPartyReferenceLinks</AssemblyName>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<Product>ResolveThirdPartyReferenceLinks</Product>
-		<Version>0.1.0</Version>
+		<Version>0.1.1</Version>
 		<PackageVersion>$(Version)-beta</PackageVersion>
 		<Title>ResolveThirdPartyReferenceLinks SandCastle BuildAssembly Component</Title>
 		<Description>SandCastle BuildAssembly component to resolve thirdparty reference links</Description>
@@ -21,6 +21,7 @@
 		<PackageProjectUrl>https://github.com/mcneel/ResolveThirdPartyReferenceLinks</PackageProjectUrl>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageReleaseNotes>https://github.com/mcneel/ResolveThirdPartyReferenceLinks/blob/main/CHANGELOG.md</PackageReleaseNotes>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<IsTool>true</IsTool>
 		<NoWarn>$(NoWarn);NU5128;CA1034;CA1303;CA1708;CA2227</NoWarn>
 		<ContentTargetFolders>tools\</ContentTargetFolders>
@@ -28,6 +29,7 @@
 
 	<ItemGroup>
 		<None Include="$(SourceDir)..\art\icon.png" Pack="true" PackagePath="" />
+		<None Include="$(SourceDir)..\README.md" Pack="true" PackagePath="" />
 	</ItemGroup>
 
 	<ItemGroup>
