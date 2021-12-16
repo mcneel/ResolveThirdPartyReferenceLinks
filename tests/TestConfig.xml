@@ -17,7 +17,7 @@
                     <targetFormatter>
                         <steps>
                             <replace pattern="T:" with="T_" />
-                            <replace pattern="." with="_" />
+                            <replace pattern="\." with="_" />
                         </steps>
                     </targetFormatter>
                     <urlFormatter format="https://developer.rhino3d.com/api/RhinoCommon/html/{target}.htm" />
